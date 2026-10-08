@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#f3efe6">
+  <meta name="description" content="私人電子桌曆記事本，可離線使用並自動儲存記事。">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="我的桌曆">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="css/style.css">
+  <title>我的桌曆</title>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brandBlock">
+      <div class="brand">MY DESK CALENDAR</div>
+      <div class="year" id="yearLabel">2026</div>
+      <div class="month" id="monthLabel">十月</div>
+    </div>
+    <div class="topActions">
+      <button class="iconBtn" id="prevMonth" aria-label="上一個月">‹</button>
+      <button class="todayBtn" id="goToday">今天</button>
+      <button class="iconBtn" id="nextMonth" aria-label="下一個月">›</button>
+      <button class="moreBtn" id="moreBtn" aria-label="更多功能">⋯</button>
+    </div>
+  </header>
+
+  <section class="infoBar">
+    <span id="monthSummary">0 筆記事</span>
+    <span id="storageState">自動儲存</span>
+  </section>
+
+  <main class="calendarShell">
+    <div class="weekRow">
+      <div class="week sun">日</div><div class="week">一</div><div class="week">二</div>
+      <div class="week">三</div><div class="week">四</div><div class="week">五</div><div class="week sat">六</div>
+    </div>
+    <div class="calendarGrid" id="calendarGrid"></div>
+  </main>
+</div>
+
+<!-- 日期記事視窗 -->
+<div class="overlay" id="noteOverlay" aria-hidden="true">
+  <section class="noteModal" role="dialog" aria-modal="true" aria-labelledby="noteDate">
+    <div class="modalTop">
+      <div>
+        <div class="modalWeek" id="noteWeek"></div>
+        <h1 id="noteDate">2026 年 10 月 8 日</h1>
+      </div>
+      <button class="closeBtn" id="closeNote" aria-label="關閉">×</button>
+    </div>
+<textarea id="noteInput" placeholder="寫下今天的事情、行程、提醒……"></textarea>
+
+    <div class="modalBottom">
+      <button class="dangerBtn" id="clearNote">清除這一天</button>
+      <span id="noteSaveState">會自動儲存</span>
+      <button class="doneBtn" id="doneNote">完成</button>
+    </div>
+  </section>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
