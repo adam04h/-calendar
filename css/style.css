@@ -30,6 +30,7 @@ button{cursor:pointer}
 .day.today{background:var(--today);outline:3px solid rgba(155,59,57,.18)}
 .day.empty{visibility:hidden;pointer-events:none}
 .num{font-size:25px;font-weight:900;line-height:1}
+.mobileWeek{display:none;font-size:.62em;font-weight:500;margin-left:3px}
 .weekend .num{color:var(--accent)}
 .lunar{font-size:11px;color:#858681;margin-top:5px}
 .notePreview{margin-top:auto;white-space:pre-wrap;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;font-size:16px;line-height:1.48;color:#45484c}
@@ -77,4 +78,44 @@ button{cursor:pointer}
 .day.holiday .num{color:#9b3b39}
 @media(max-width:720px){
   .holidayLabel{font-size:9px;line-height:1.2;margin-top:3px}
+}
+
+/* ===== 手機直式：改成 3 欄大型桌曆 ===== */
+@media (max-width:720px) and (orientation: portrait){
+  body{padding:0;background:var(--paper)}
+  #app{min-height:100vh;border-radius:0;box-shadow:none}
+
+  .topbar{padding:14px 12px 12px;align-items:center}
+  .brand{display:none}
+  .brandBlock{flex:1;text-align:center}
+  .year{font-size:18px;letter-spacing:.08em;margin-top:0}
+  .month{font-size:54px;line-height:.95;margin-top:4px}
+  .topActions{position:absolute;right:8px;top:10px;gap:3px}
+  .topActions button{height:34px;background:rgba(255,250,241,.86);border-radius:9px}
+  .iconBtn{width:32px;font-size:24px}
+  .todayBtn{padding:0 7px;font-size:11px}
+  .moreBtn{display:none}
+
+  .infoBar{padding:7px 12px;font-size:11px}
+  .calendarShell{padding:8px 8px 16px}
+
+  /* 直式不再用星期標題列，日期本身顯示星期 */
+  .weekRow{display:none}
+  .calendarGrid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:7px;
+    grid-auto-rows:minmax(145px,auto);
+  }
+  .day.empty{display:none}
+  .day{
+    min-height:145px;
+    border-radius:17px;
+    padding:10px 9px;
+  }
+  .num{font-size:32px;line-height:1.05}
+  .mobileWeek{display:inline}
+  .lunar{font-size:10px;margin-top:5px}
+  .holidayLabel{font-size:10px;line-height:1.2;margin-top:5px}
+  .notePreview{font-size:14px;line-height:1.5;-webkit-line-clamp:4}
+  .noteMark{right:8px;top:9px;width:7px;height:7px}
 }

@@ -250,6 +250,13 @@
       const num = document.createElement("div");
       num.className = "num";
       num.textContent = d;
+
+      // 手機直式會改成 3 欄排列，因此把星期放進日期格，
+      // 讓畫面像紙本桌曆一樣直接看到「1(四)」。
+      const mobileWeek = document.createElement("span");
+      mobileWeek.className = "mobileWeek";
+      mobileWeek.textContent = `(${["日","一","二","三","四","五","六"][dow]})`;
+      num.appendChild(mobileWeek);
       btn.appendChild(num);
 
       if (holiday) {
